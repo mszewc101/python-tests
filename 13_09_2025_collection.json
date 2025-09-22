@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "6fac7c94-953f-463f-8d58-7cc9749344e5",
+		"name": "Simple Books API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5343143",
+		"_collection_link": "https://test44-2152.postman.co/workspace/codebrainers_tester~d642a0f7-5f20-4636-8797-1c7c99aace85/collection/5343143-6fac7c94-953f-463f-8d58-7cc9749344e5?action=share&source=collection_link&creator=5343143"
+	},
+	"item": [
+		{
+			"name": "1. Hello Simple Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let return_code = pm.environment.get(\"correct_code\");\r",
+							"// let return_code = 200;\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{simple_books_url}}",
+					"host": [
+						"{{simple_books_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Hello Simple Books - Wrong URL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{simple_books_url}}/123141asdadasd1rafasd",
+					"host": [
+						"{{simple_books_url}}"
+					],
+					"path": [
+						"123141asdadasd1rafasd"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get All Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{simple_books_url}}/orders",
+					"host": [
+						"{{simple_books_url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Authentication Bearer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"{{$randomFirstName}}{{$randomLastName}}\",\r\n    \"clientEmail\": \"{{$randomLastName}}@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{simple_books_url}}/api-clients/",
+					"host": [
+						"{{simple_books_url}}"
+					],
+					"path": [
+						"api-clients",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
